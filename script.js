@@ -1,7 +1,6 @@
-/* ============================
-   MODAL
-============================ */
+/*CÓDIGO DO MODAL*/
 const btnAbrir = document.querySelector(".btn-header");
+const btnHero = document.querySelector(".hero .btn");
 const modal = document.querySelector("#modal-agendar");
 const fechar = modal.querySelector(".close");
 
@@ -11,10 +10,20 @@ btnAbrir.addEventListener("click", (e) => {
     modal.style.display = "flex";
 });
 
+
+btnHero.addEventListener("click", (e) => {
+    e.preventDefault();
+    modal.style.display = "flex";
+});
+
+
+
 // Fechar no X
 fechar.addEventListener("click", () => {
     modal.style.display = "none";
 });
+
+
 
 // Fechar clicando fora da caixa
 window.addEventListener("click", (e) => {
@@ -24,10 +33,10 @@ window.addEventListener("click", (e) => {
 });
 
 
-/* ============================
-   CALENDÁRIO
-============================ */
+//------------------------------------------------------------------------------------
 
+
+/*CALENDÁRIO*/
 // Container onde o calendário aparece
 const calendarioContainer = document.getElementById("calendario");
 
@@ -36,6 +45,7 @@ const datasBloqueadas = ["2025-02-15", "2025-02-20"];
 
 // Dias de funcionamento (0 = Domingo, 6 = Sábado)
 const diasAbertos = [2, 3, 4, 5, 6]; 
+
 // Terça a Sábado
 
 // Estado atual
@@ -44,7 +54,6 @@ let anoAtual = new Date().getFullYear();
 
 // Guarda o dia selecionado
 let diaSelecionado = null;
-
 
 function gerarCalendario(ano = anoAtual, mes = mesAtual) {
 
@@ -66,6 +75,7 @@ function gerarCalendario(ano = anoAtual, mes = mesAtual) {
     `;
 
     calendarioContainer.appendChild(header);
+
 
 
     /* ----- DIAS DA SEMANA ----- */
@@ -125,6 +135,7 @@ function gerarCalendario(ano = anoAtual, mes = mesAtual) {
     calendarioContainer.appendChild(grid);
 
 
+
     /* ----- BOTÕES DE NAVEGAÇÃO ----- */
     document.getElementById("prev").onclick = () => {
         mesAtual--;
@@ -149,9 +160,7 @@ function gerarCalendario(ano = anoAtual, mes = mesAtual) {
 /* Rodar o calendário na abertura */
 gerarCalendario();
 
-/* ============================
-   HORÁRIOS
-============================ */
+/* HORÁRIO */
 
 const horarioContainer = document.getElementById("horario");
 let horarioSelecionado = null;
@@ -191,3 +200,42 @@ function gerarHorarios() {
         horarioContainer.appendChild(linha);
     });
 }
+
+
+
+/*ENVIAR FORMULÁRIO DO MODAL PARA WHATSAPP */
+
+const form = document.getElementById("form-agendar");
+
+const numeroWhats = "5511982765108";
+
+form.addEventListener("submit", function (e) {
+    e.preventDefault(); // impedir envio padrão do formulário
+
+    // Capturar os campos
+    const nome = form.querySelector('input[placeholder="Seu nome"]').value.trim();
+    const whatsapp = form.querySelector('input[placeholder="(00) 00000-0000"]').value.trim();
+
+    // Usar os valores selecionados no calendário e horário
+    if (!diaSelecionado || !horarioSelecionado) {
+        alert("Por favor, selecione o dia e horário do atendimento.");
+        return;
+    }
+
+    // Montar a mensagem bonitinha
+    const mensagem = 
+`Olá, meu nome é *${nome}*. Achei muito bom o serviço de vocês e agendei um horário!
+
+*Dia:* ${diaSelecionado}
+*Horário:* ${horarioSelecionado}
+
+Ficarei feliz em ter uma sessão de beleza com vocês!`;
+
+    // Transformar em URL
+    const url = `https://wa.me/${numeroWhats}?text=${encodeURIComponent(mensagem)}`;
+
+    // Redirecionar para o WhatsApp
+    window.open(url, "_blank");
+});
+
+
