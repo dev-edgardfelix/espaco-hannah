@@ -675,3 +675,526 @@ input {
     box-shadow: 0 0 10px rgba(255,110,40,.5);
     transform: scale(1.05);
 }
+
+
+.ms-service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 20px;
+}
+
+.ms-service-image img {
+  width: 100%;
+  height: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+@media (max-width: 768px) {
+  .ms-service-detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ===== SEÇÃO ===== */
+.avaliacoes {
+  max-width: 1100px;
+  margin: 80px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.avaliacoes h3 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #2b1b12;
+}
+
+/* ===== ANIMAÇÃO RESPIRAÇÃO ===== */
+@keyframes breathGold {
+  0% {
+    transform: translateY(0);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  }
+  50% {
+    transform: translateY(-6px);
+    box-shadow: 0 0 22px rgba(212, 175, 55, 0.55);
+  }
+  100% {
+    transform: translateY(0);
+    box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  }
+}
+
+/* ===== CARD MÉDIA ===== */
+.stars {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  margin-bottom: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  animation: breathGold 4s ease-in-out infinite;
+}
+
+.stars .nota {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.estrelas {
+  color: #d4af37;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+}
+
+.stars p {
+  color: #555;
+  font-size: 0.95rem;
+}
+
+/* ===== CARD AVALIAÇÃO ===== */
+.cardAvaliable {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 520px;
+  text-align: left;
+  animation: breathGold 4s ease-in-out infinite;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.cardAvaliable .nota {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #d4af37;
+}
+
+.comentario {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.autor {
+  font-size: 0.85rem;
+  color: #777;
+  font-style: italic;
+}
+
+/* ===== HOVER ===== */
+.cardAvaliable:hover,
+.stars:hover {
+  animation-play-state: paused;
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+  .avaliacoes h3 {
+    font-size: 1.6rem;
+  }
+
+  .stars {
+    width: 100%;
+  }
+
+  .cardAvaliable {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardAvaliable {
+    text-align: center;
+  }
+
+  .card-top {
+    justify-content: center;
+  }
+}
+
+/* =========================
+   HISTÓRIA
+   ========================= */
+.history {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(180deg, #fafafa, #f5f5f5);
+}
+
+.history-card {
+  max-width: 900px;
+  background: #ffffff;
+  padding: 50px 45px;
+  border-radius: 22px;
+  position: relative;
+  box-shadow:
+    0 0 0 rgba(212, 175, 55, 0.0),
+    0 12px 30px rgba(0, 0, 0, 0.08);
+  animation: historyBreath 6s ease-in-out infinite;
+}
+
+/* brilho dourado respirando */
+@keyframes historyBreath {
+  0% {
+    box-shadow:
+      0 0 0 rgba(212, 175, 55, 0.15),
+      0 12px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+  }
+  50% {
+    box-shadow:
+      0 0 28px rgba(212, 175, 55, 0.45),
+      0 18px 40px rgba(0, 0, 0, 0.12);
+    transform: translateY(-6px);
+  }
+  100% {
+    box-shadow:
+      0 0 0 rgba(212, 175, 55, 0.15),
+      0 12px 30px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+  }
+}
+
+/* tag pequena */
+.history-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, #d4af37, #f5d76e);
+  color: #2c1a00;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+/* título */
+.history-card h3 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  color: #501900;
+}
+
+/* texto */
+.history-card p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 18px;
+}
+
+/* assinatura */
+.history-sign {
+  margin-top: 35px;
+  text-align: right;
+}
+
+.history-sign span {
+  display: block;
+  font-weight: 800;
+  color: #501900;
+  font-size: 18px;
+}
+
+.history-sign small {
+  color: #777;
+  font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 768px) {
+  .history-card {
+    padding: 35px 25px;
+  }
+
+  .history-card h3 {
+    font-size: 26px;
+  }
+
+  .history-card p {
+    font-size: 15px;
+  }
+
+  .history-sign {
+    text-align: center;
+    margin-top: 25px;
+  }
+}
+
+/* =========================
+   INFORMAÇÕES & FACILIDADES
+   ========================= */
+.infoDesc {
+  padding: 70px 20px;
+  background: #ffffff;
+}
+
+.infoDesc h3 {
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 45px;
+  color: #501900;
+}
+
+/* grid principal */
+.info-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+/* card */
+.info-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  padding: 26px 24px;
+  border-radius: 18px;
+  background: #fafafa;
+  border: 1px solid #eee;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+}
+
+/* ícone */
+.info-icon {
+  font-size: 34px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* conteúdo */
+.info-content span {
+  display: block;
+  font-weight: 700;
+  font-size: 17px;
+  color: #501900;
+  margin-bottom: 6px;
+}
+
+.info-content p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 600px) {
+  .infoDesc h3 {
+    font-size: 24px;
+  }
+
+  .info-card {
+    padding: 22px 20px;
+  }
+
+  .info-icon {
+    font-size: 30px;
+  }
+
+  .info-content span {
+    font-size: 16px;
+  }
+
+  .info-content p {
+    font-size: 14.5px;
+  }
+}
+
+/* =========================
+   INSTRUÇÕES ESPECIAIS
+   ========================= */
+.instructions {
+  padding: 70px 20px;
+  display: flex;
+  justify-content: center;
+  background: #fafafa;
+}
+
+.instructions-card {
+  max-width: 900px;
+  width: 100%;
+  background: #ffffff;
+  padding: 45px 40px;
+  border-radius: 22px;
+  box-shadow:
+    0 0 35px rgba(128, 74, 44, 0.25),
+    0 15px 35px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(128, 74, 44, 0.25);
+}
+
+/* título */
+.instructions-card h3 {
+  font-size: 30px;
+  margin-bottom: 28px;
+  color: #5a2a12;
+  text-align: center;
+}
+
+/* lista */
+.instructions-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.instructions-card li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  padding-left: 28px;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+/* marcador elegante */
+.instructions-card li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #8b5a3c;
+  font-weight: 700;
+}
+
+/* agradecimento */
+.instructions-card .thanks {
+  margin-top: 35px;
+  text-align: center;
+  font-size: 16px;
+  color: #5a2a12;
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 768px) {
+  .instructions-card {
+    padding: 35px 25px;
+  }
+
+  .instructions-card h3 {
+    font-size: 24px;
+  }
+
+  .instructions-card li {
+    font-size: 15px;
+  }
+
+  .instructions-card .thanks {
+    font-size: 15px;
+  }
+}
+
+/* =========================
+   POLÍTICA DE CANCELAMENTO
+   ========================= */
+.politic {
+  padding: 80px 20px;
+  display: flex;
+  justify-content: center;
+  background: #f7f5f3;
+}
+
+.politic-card {
+  max-width: 900px;
+  width: 100%;
+  background: #ffffff;
+  padding: 50px 45px;
+  border-radius: 20px;
+  border-left: 6px solid #7a3e1d;
+  box-shadow:
+    0 0 30px rgba(122, 62, 29, 0.25),
+    0 18px 35px rgba(0, 0, 0, 0.08);
+}
+
+/* título */
+.politic-card h3 {
+  font-size: 30px;
+  margin-bottom: 25px;
+  color: #4a1f0f;
+  text-align: center;
+}
+
+/* introdução */
+.politic-intro {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 28px;
+  text-align: center;
+}
+
+/* lista */
+.politic-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px 0;
+}
+
+.politic-card li {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  padding-left: 34px;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+/* marcador forte */
+.politic-card li::before {
+  content: "⚠";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+  color: #7a3e1d;
+}
+
+/* texto final */
+.politic-final {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4a1f0f;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* =========================
+   RESPONSIVO
+   ========================= */
+@media (max-width: 768px) {
+  .politic-card {
+    padding: 35px 25px;
+  }
+
+  .politic-card h3 {
+    font-size: 24px;
+  }
+
+  .politic-intro,
+  .politic-card li,
+  .politic-final {
+    font-size: 15px;
+  }
+}
