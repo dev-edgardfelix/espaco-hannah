@@ -12,7 +12,7 @@ const services = [
     title: "Mãos e Pés",
     short: "Manicure e pedicure completas.",
     desc: "Esmaltação, cuidados de saúde das unhas e esfoliação. Acabamento profissional.",
-    img: "./media/mãos-e-pés.jpg",
+    img: "./media/maos-pes.jpg",
   },
   {
     id: 2,
