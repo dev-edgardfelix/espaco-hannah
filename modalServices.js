@@ -138,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function openHairTreatmentsServices() {
-  const items = servicesHairTreatments.map(s => `
+    const items = servicesHairTreatments.map(s => `
     <li class="ms-item">
       <div class="ms-item-body">
         <h3>${s.title}</h3>
@@ -152,7 +152,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </li>
   `).join("");
 
-  createModal(`
+    createModal(`
     <div class="ms-header">
       <h2>Tratamentos Capilares</h2>
       <p>Escolha um tratamento</p>
@@ -160,18 +160,18 @@ document.addEventListener("DOMContentLoaded", () => {
     <ul class="ms-list">${items}</ul>
   `);
 
-  modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
-    btn.onclick = () => {
-      openHairTreatmentsDetails(Number(btn.dataset.id));
-    };
-  });
-}
+    modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
+      btn.onclick = () => {
+        openHairTreatmentsDetails(Number(btn.dataset.id));
+      };
+    });
+  }
 
 
 
 
   function openHairstylesServices() {
-  const items = servicesHairstyles.map(s => `
+    const items = servicesHairstyles.map(s => `
     <li class="ms-item">
       <div class="ms-item-body">
         <h3>${s.title}</h3>
@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", () => {
     </li>
   `).join("");
 
-  createModal(`
+    createModal(`
     <div class="ms-header">
       <h2>Penteados</h2>
       <p>Escolha um estilo</p>
@@ -193,16 +193,16 @@ document.addEventListener("DOMContentLoaded", () => {
     <ul class="ms-list">${items}</ul>
   `);
 
-  modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
-    btn.onclick = () => {
-      openHairstylesDetails(Number(btn.dataset.id));
-    };
-  });
-}
+    modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
+      btn.onclick = () => {
+        openHairstylesDetails(Number(btn.dataset.id));
+      };
+    });
+  }
 
 
-function openManicureNationalServices() {
-  const items = servicesManicureNational.map(s => `
+  function openManicureNationalServices() {
+    const items = servicesManicureNational.map(s => `
     <li class="ms-item">
       <div class="ms-item-body">
         <h3>${s.title}</h3>
@@ -216,7 +216,7 @@ function openManicureNationalServices() {
     </li>
   `).join("");
 
-  createModal(`
+    createModal(`
     <div class="ms-header">
       <h2>Manicure Nacional</h2>
       <p>Serviços disponíveis</p>
@@ -224,17 +224,17 @@ function openManicureNationalServices() {
     <ul class="ms-list">${items}</ul>
   `);
 
-  modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
-    btn.onclick = () => {
-      openManicureNationalDetails(Number(btn.dataset.id));
-    };
-  });
-}
+    modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
+      btn.onclick = () => {
+        openManicureNationalDetails(Number(btn.dataset.id));
+      };
+    });
+  }
 
 
 
-function openHairTherapyServices() {
-  const items = servicesHairTherapy.map(s => `
+  function openHairTherapyServices() {
+    const items = servicesHairTherapy.map(s => `
     <li class="ms-item">
       <div class="ms-item-body">
         <h3>${s.title}</h3>
@@ -248,7 +248,7 @@ function openHairTherapyServices() {
     </li>
   `).join("");
 
-  createModal(`
+    createModal(`
     <div class="ms-header">
       <h2>Terapia Capilar</h2>
       <p>Serviço disponível</p>
@@ -256,12 +256,12 @@ function openHairTherapyServices() {
     <ul class="ms-list">${items}</ul>
   `);
 
-  modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
-    btn.onclick = () => {
-      openHairTherapyDetails(Number(btn.dataset.id));
-    };
-  });
-}
+    modalContainer.querySelectorAll(".ms-btn-ver").forEach(btn => {
+      btn.onclick = () => {
+        openHairTherapyDetails(Number(btn.dataset.id));
+      };
+    });
+  }
 
 
 
@@ -298,6 +298,77 @@ function openHairTherapyServices() {
     modalContainer.querySelector(".ms-voltar").onclick = openHairServices;
 
     modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;   // <<< linha nova e fundamental
+      closeModal();
+      document.querySelector(".btn-header").click();
+    };
+
+  }
+
+
+
+  function openHandsFeetDetails(id) {
+    const s = servicesHandsFeet.find(item => item.id === id);
+    if (!s) return;
+
+    createModal(`
+    <div class="ms-service-detail">
+      <div class="ms-service-image">
+        <img src="${s.img}" alt="${s.title}">
+      </div>
+
+      <div class="ms-service-info">
+        <h2>${s.title}</h2>
+        <p><strong>Duração:</strong> ${s.duration}</p>
+        <p><strong>Valor:</strong> ${s.price}</p>
+        <p class="ms-desc">${s.desc}</p>
+
+        <div class="ms-actions">
+          <button class="ms-voltar">Voltar</button>
+          <button class="ms-agendar">Agendar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+    modalContainer.querySelector(".ms-voltar").onclick = openHandsFeetServices;
+
+    modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;
+      closeModal();
+      document.querySelector(".btn-header").click();
+    };
+  }
+
+
+  function openHairTreatmentsDetails(id) {
+    const s = servicesHairTreatments.find(item => item.id === id);
+    if (!s) return;
+
+    createModal(`
+    <div class="ms-service-detail">
+      <div class="ms-service-image">
+        <img src="${s.img}" alt="${s.title}">
+      </div>
+
+      <div class="ms-service-info">
+        <h2>${s.title}</h2>
+        <p><strong>Duração:</strong> ${s.duration}</p>
+        <p><strong>Valor:</strong> ${s.price}</p>
+        <p class="ms-desc">${s.desc}</p>
+
+        <div class="ms-actions">
+          <button class="ms-voltar">Voltar</button>
+          <button class="ms-agendar">Agendar</button>
+        </div>
+      </div>
+    </div>
+  `);
+
+    modalContainer.querySelector(".ms-voltar").onclick = openHairTreatmentsServices;
+
+    modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;
       closeModal();
       document.querySelector(".btn-header").click();
     };
@@ -305,11 +376,11 @@ function openHairTherapyServices() {
 
 
 
-  function openHandsFeetDetails(id) {
-  const s = servicesHandsFeet.find(item => item.id === id);
-  if (!s) return;
+  function openHairstylesDetails(id) {
+    const s = servicesHairstyles.find(item => item.id === id);
+    if (!s) return;
 
-  createModal(`
+    createModal(`
     <div class="ms-service-detail">
       <div class="ms-service-image">
         <img src="${s.img}" alt="${s.title}">
@@ -329,20 +400,21 @@ function openHairTherapyServices() {
     </div>
   `);
 
-  modalContainer.querySelector(".ms-voltar").onclick = openHandsFeetServices;
+    modalContainer.querySelector(".ms-voltar").onclick = openHairstylesServices;
 
-  modalContainer.querySelector(".ms-agendar").onclick = () => {
-    closeModal();
-    document.querySelector(".btn-header").click();
-  };
-}
+    modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;
+      closeModal();
+      document.querySelector(".btn-header").click();
+    };
+  }
 
 
-function openHairTreatmentsDetails(id) {
-  const s = servicesHairTreatments.find(item => item.id === id);
-  if (!s) return;
+  function openManicureNationalDetails(id) {
+    const s = servicesManicureNational.find(item => item.id === id);
+    if (!s) return;
 
-  createModal(`
+    createModal(`
     <div class="ms-service-detail">
       <div class="ms-service-image">
         <img src="${s.img}" alt="${s.title}">
@@ -362,21 +434,22 @@ function openHairTreatmentsDetails(id) {
     </div>
   `);
 
-  modalContainer.querySelector(".ms-voltar").onclick = openHairTreatmentsServices;
+    modalContainer.querySelector(".ms-voltar").onclick =
+      openManicureNationalServices;
 
-  modalContainer.querySelector(".ms-agendar").onclick = () => {
-    closeModal();
-    document.querySelector(".btn-header").click();
-  };
-}
+    modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;
+      closeModal();
+      document.querySelector(".btn-header").click();
+    };
+  }
 
 
+  function openHairTherapyDetails(id) {
+    const s = servicesHairTherapy.find(item => item.id === id);
+    if (!s) return;
 
-function openHairstylesDetails(id) {
-  const s = servicesHairstyles.find(item => item.id === id);
-  if (!s) return;
-
-  createModal(`
+    createModal(`
     <div class="ms-service-detail">
       <div class="ms-service-image">
         <img src="${s.img}" alt="${s.title}">
@@ -396,81 +469,15 @@ function openHairstylesDetails(id) {
     </div>
   `);
 
-  modalContainer.querySelector(".ms-voltar").onclick = openHairstylesServices;
+    modalContainer.querySelector(".ms-voltar").onclick =
+      openHairTherapyServices;
 
-  modalContainer.querySelector(".ms-agendar").onclick = () => {
-    closeModal();
-    document.querySelector(".btn-header").click();
-  };
-}
-
-
-function openManicureNationalDetails(id) {
-  const s = servicesManicureNational.find(item => item.id === id);
-  if (!s) return;
-
-  createModal(`
-    <div class="ms-service-detail">
-      <div class="ms-service-image">
-        <img src="${s.img}" alt="${s.title}">
-      </div>
-
-      <div class="ms-service-info">
-        <h2>${s.title}</h2>
-        <p><strong>Duração:</strong> ${s.duration}</p>
-        <p><strong>Valor:</strong> ${s.price}</p>
-        <p class="ms-desc">${s.desc}</p>
-
-        <div class="ms-actions">
-          <button class="ms-voltar">Voltar</button>
-          <button class="ms-agendar">Agendar</button>
-        </div>
-      </div>
-    </div>
-  `);
-
-  modalContainer.querySelector(".ms-voltar").onclick =
-    openManicureNationalServices;
-
-  modalContainer.querySelector(".ms-agendar").onclick = () => {
-    closeModal();
-    document.querySelector(".btn-header").click();
-  };
-}
-
-
-function openHairTherapyDetails(id) {
-  const s = servicesHairTherapy.find(item => item.id === id);
-  if (!s) return;
-
-  createModal(`
-    <div class="ms-service-detail">
-      <div class="ms-service-image">
-        <img src="${s.img}" alt="${s.title}">
-      </div>
-
-      <div class="ms-service-info">
-        <h2>${s.title}</h2>
-        <p><strong>Duração:</strong> ${s.duration}</p>
-        <p><strong>Valor:</strong> ${s.price}</p>
-        <p class="ms-desc">${s.desc}</p>
-
-        <div class="ms-actions">
-          <button class="ms-voltar">Voltar</button>
-          <button class="ms-agendar">Agendar</button>
-        </div>
-      </div>
-    </div>
-  `);
-
-  modalContainer.querySelector(".ms-voltar").onclick =
-    openHairTherapyServices;
-
-  modalContainer.querySelector(".ms-agendar").onclick = () => {
-    closeModal();
-    document.querySelector(".btn-header").click();
-  };
-}
+    modalContainer.querySelector(".ms-agendar").onclick = () => {
+      window.servicoSelecionado = s;
+      closeModal();
+      document.querySelector(".btn-header").click();
+    };
+  }
 
 
 

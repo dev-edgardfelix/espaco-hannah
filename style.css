@@ -1198,3 +1198,82 @@ input {
     font-size: 15px;
   }
 }
+
+
+
+/* =========================
+   MODAL FORM — ESTILO HANNAH
+   ========================= */
+
+.modal-content h2 {
+    text-align: center;
+    color: #501900;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+#form-agendar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#form-agendar label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #501900;
+}
+
+#form-agendar input,
+#form-agendar select {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    font-size: 14px;
+    transition: all .25s ease;
+    outline: none;
+}
+
+#form-agendar input:focus,
+#form-agendar select:focus {
+    border-color: #c94508;
+    box-shadow: 0 0 0 3px rgba(201, 69, 8, 0.15);
+}
+
+#form-agendar input:hover,
+#form-agendar select:hover {
+    border-color: #c94508;
+}
+
+/* bloco calendário + horários */
+.calendario-agendar,
+.agenda-horario {
+    background: #faf7f5;
+    padding: 14px;
+    border-radius: 14px;
+    border: 1px solid #eee;
+}
+
+/* botão enviar */
+.btn-modal {
+    background: linear-gradient(135deg, #c94508, #501900);
+    font-size: 16px;
+    letter-spacing: .5px;
+    transition: all .3s ease;
+}
+
+.btn-modal:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,.18);
+}
+
+/* botão fechar */
+.close {
+    color: #501900;
+    transition: transform .25s ease, color .25s ease;
+}
+
+.close:hover {
+    color: #c94508;
+    transform: scale(1.2);
+}

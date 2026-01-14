@@ -513,3 +513,46 @@ const servicesHairTherapy = [
     img: "./mediaTerapiaCapilar/terapia-capilar.jpg"
   }
 ];
+
+
+
+// ================== MAPEAMENTO DE PROFISSIONAIS ==================
+
+const profissionaisPorCargo = {
+  Cabeleireira: ["San", "Vania"],
+  Manicure: ["Marcela", "Van"],
+  "Nails Designer": ["Eduarda"],
+  Esteticista: ["Mel"],
+  Massoterapeuta: ["Mavi"]
+};
+
+const cargoPorCategoria = {
+  cabelo: "Cabeleireira",
+  penteados: "Cabeleireira",
+  "tratamento-capilar": "Cabeleireira",
+  "terapia-capilar": "Cabeleireira",
+
+  "maos-pes": "Manicure",
+  "manicure-nacional": "Manicure",
+
+  // se depois tiver serviços de estética ou massagem
+  estetica: "Esteticista",
+  massagem: "Massoterapeuta"
+};
+
+function aplicarProfissionais(lista) {
+  lista.forEach(servico => {
+    const cargo = cargoPorCategoria[servico.category];
+    servico.professionals = profissionaisPorCargo[cargo] || [];
+  });
+}
+
+// Aplica automaticamente em todas as listas
+[
+  servicesHair,
+  servicesHandsFeet,
+  servicesHairstyles,
+  servicesHairTreatments,
+  servicesManicureNational,
+  servicesHairTherapy
+].forEach(aplicarProfissionais);
